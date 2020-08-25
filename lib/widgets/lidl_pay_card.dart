@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:LidlLite/screens/show_code.dart';
-import 'package:LidlLite/util/device_id.dart';
 import 'package:LidlLite/util/goto.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -44,12 +43,13 @@ class LidlPayCard extends StatelessWidget {
                 ),
                 for (var card in cards) InkWell(
                   splashColor: Colors.white.withAlpha(30),
-                  onTap: () async {
-                    var code = await api.getQR(card.loyaltyId);
+                  onTap: () {
+                    var data = api.cred.token.idToken.claims;
                     push(context, ShowCodeScreen(
-                      code,
+                      api.getQR(card.loyaltyId),
                       loggedIn: true,
-                      lidlPay: true
+                      lidlPay: true,
+                      name: data.name + ' ' + data.familyName,
                     ));
                   },
                   child: Card(

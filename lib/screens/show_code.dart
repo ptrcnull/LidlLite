@@ -1,10 +1,11 @@
+import 'package:LidlLite/widgets/card_container.dart';
+import 'package:flutter/material.dart';
+
 import 'package:intl/intl.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 
 import 'package:LidlLite/prefs.dart';
 import 'package:LidlLite/screens/login.dart';
 import 'package:LidlLite/util/goto.dart';
-import 'package:flutter/material.dart';
 
 
 const lightBlue = Color(0xFF63BEFA);
@@ -21,15 +22,17 @@ String reformatLidlPayCode(String code) {
 }
 
 class ShowCodeScreen extends StatefulWidget {
-  final String code;
+  final dynamic code;
   final int coupons;
   final bool lidlPay;
   final bool loggedIn;
+  final String name;
 
-  ShowCodeScreen(String _code, {
+  ShowCodeScreen(dynamic _code, {
     this.coupons = 0,
     this.lidlPay = false,
-    this.loggedIn = false}): this.code = (lidlPay && !loggedIn)
+    this.loggedIn = false,
+    this.name = 'Name Surname'}): this.code = (lidlPay && !loggedIn)
       ? reformatLidlPayCode(_code)
       : _code;
 
@@ -38,7 +41,7 @@ class ShowCodeScreen extends StatefulWidget {
 }
 
 class _ShowCodeScreenState extends State<ShowCodeScreen> {
-  String code;
+  dynamic code;
 
   _ShowCodeScreenState(this.code);
 
@@ -70,19 +73,11 @@ class _ShowCodeScreenState extends State<ShowCodeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var cardWidth = (MediaQuery.of(context).size.width - 20);
-    var cardHeight = cardWidth * 0.7;
-    var cardPadding = 15;
-    var qrPadding = (cardHeight - (cardPadding * 2) - 120) / 2;
-
     var gradient = LinearGradient(
       colors: widget.lidlPay ? lidlPayGradientColors : lidlPlusGradientColors,
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter
     );
-
-    print("Showing code:");
-    print(code);
 
     if (widget.lidlPay && !widget.loggedIn) {
       Future.delayed(Duration(seconds: 30)).then((value) {
@@ -133,52 +128,20 @@ class _ShowCodeScreenState extends State<ShowCodeScreen> {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(15))
+                    code is String
+                      ? CardContainer(code, widget.name)
+                      : FutureBuilder(
+                        future: code,
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return CardContainer(snapshot.data, widget.name);
+                          } else if (snapshot.hasError) {
+                            return Text(snapshot.error.toString());
+                          } else {
+                            return Center(child: CircularProgressIndicator());
+                          }
+                        },
                       ),
-                      width: cardWidth,
-                      height: cardHeight,
-                      margin: EdgeInsets.only(top: 20),
-                      padding: EdgeInsets.all(cardPadding.toDouble()),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(top: qrPadding),
-                            child: Center(
-                              child: QrImage(
-                                data: code,
-                                version: QrVersions.auto,
-                                size: 120.0,
-                              ),
-                            )
-                          ),
-                          Spacer(),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: 5),
-                            child: Text(
-                              'Patrycja Rosa',
-                              style: TextStyle(
-                                color: Colors.black87,
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.w700,
-                              ),
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                          Text(
-                            code.substring(0, 17),
-                            style: TextStyle(
-                              color: Colors.black38,
-                              fontSize: 10.0,
-                            ),
-                            textAlign: TextAlign.left,
-                          ),
-                        ]
-                      )
-                    ),
                     Padding(
                       padding: EdgeInsets.only(top: 20, bottom: 20),
                       child: Row(

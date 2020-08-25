@@ -30,9 +30,11 @@ class LidlPlusCard extends StatelessWidget {
             return InkWell(
               splashColor: Colors.white.withAlpha(30),
               onTap: () {
+                var data = api.cred.idToken.claims;
                 push(context, ShowCodeScreen(
                   snapshot.data,
                   loggedIn: true,
+                  name: data.name + ' ' + data.familyName,
                 ));
               },
               child: CardTile(
