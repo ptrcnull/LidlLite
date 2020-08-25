@@ -1,15 +1,15 @@
-import 'package:LidlLite/widgets/card_tile.dart';
 import 'package:flutter/material.dart';
+
 import 'package:openid_client/openid_client.dart';
 
-class UserDataCard extends StatelessWidget {
-  final OpenIdClaims data;
+import 'package:LidlLite/api/client.dart';
+import 'package:LidlLite/widgets/card_tile.dart';
 
-  UserDataCard(this.data);
+class UserDataCard extends StatelessWidget {
+  final OpenIdClaims data = api.cred.token.idToken.claims;
 
   @override
   Widget build(BuildContext context) {
-    print(data);
     return Card(
       child: CardTile(
         leading: Icon(Icons.person),

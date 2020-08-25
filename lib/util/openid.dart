@@ -1,4 +1,3 @@
-import 'package:LidlLite/api/client.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:openid_client/openid_client.dart' as openid;
@@ -18,14 +17,6 @@ class OpenIDHttpClient extends http.BaseClient {
 
 class Credential extends openid.Credential {
   openid.TokenResponse get token => openid.TokenResponse.fromJson(super.response);
-
-  Future<openid.TokenResponse> getTokenResponse([bool forceRefresh = false]) async {
-    var res = await super.getTokenResponse(forceRefresh);
-
-    api.token = res.accessToken;
-
-    return res;
-  }
 
   Credential.fromJson(Map<String, dynamic> json) : super.fromJson(json, httpClient: OpenIDHttpClient());
 }

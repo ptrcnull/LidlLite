@@ -49,7 +49,7 @@ class LogInButton extends StatelessWidget {
             var cred = Credential.fromJson(openIdCred.toJson());
 
             await Prefs.setString('credentials', jsonEncode(cred.toJson()));
-            api.token = (await cred.getTokenResponse()).accessToken;
+            api.cred = cred;
 
             var success = await api.init();
             if (!success) {
@@ -61,7 +61,7 @@ class LogInButton extends StatelessWidget {
               );
             }
 
-            goto(context, HomeScreen(cred));
+            goto(context, HomeScreen());
           }
         });
       },

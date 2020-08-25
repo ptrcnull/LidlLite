@@ -1,19 +1,14 @@
+import 'package:flutter/material.dart';
+
 import 'package:LidlLite/prefs.dart';
 import 'package:LidlLite/screens/login.dart';
 import 'package:LidlLite/util/goto.dart';
 import 'package:LidlLite/widgets/lidl_pay_card.dart';
 import 'package:LidlLite/widgets/lidl_plus_card.dart';
-import 'package:flutter/material.dart';
-
-import 'package:LidlLite/util/openid.dart';
 import 'package:LidlLite/widgets/person_data_card.dart';
 import 'package:LidlLite/widgets/token_expiry_card.dart';
 
 class HomeScreen extends StatelessWidget {
-  final Credential cred;
-
-  HomeScreen(this.cred);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,8 +35,8 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          UserDataCard(cred.token.idToken.claims),
-          TokenExpiryCard(cred),
+          UserDataCard(),
+          TokenExpiryCard(),
           LidlPlusCard(),
           LidlPayCard(),
         ],

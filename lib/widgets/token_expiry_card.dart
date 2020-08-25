@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:LidlLite/api/client.dart';
 import 'package:LidlLite/prefs.dart';
 import 'package:LidlLite/widgets/card_tile.dart';
 import 'package:LidlLite/widgets/error_dialog.dart';
@@ -7,20 +8,14 @@ import 'package:flutter/material.dart';
 
 import 'package:duration/duration.dart';
 
-import 'package:LidlLite/util/openid.dart';
-
 class TokenExpiryCard extends StatefulWidget {
-  final Credential cred;
-
-  TokenExpiryCard(this.cred);
-
   _TokenExpiryCardState createState() => _TokenExpiryCardState();
 }
 
 class _TokenExpiryCardState extends State<TokenExpiryCard> {
   @override
   Widget build(BuildContext context) {
-    var diff = widget.cred.token.expiresAt.difference(DateTime.now());
+    var diff = api.cred.token.expiresAt.difference(DateTime.now());
     var expired = diff.isNegative;
 
     var duration = prettyDuration(
@@ -40,8 +35,8 @@ class _TokenExpiryCardState extends State<TokenExpiryCard> {
         splashColor: Colors.white.withAlpha(30),
         onTap: () async {
           try {
-            await widget.cred.getTokenResponse(true);
-            await Prefs.setString('credentials', jsonEncode(widget.cred.toJson()));
+            await api.cred.getTokenResponse(true);
+            await Prefs.setString('credentials', jsonEncode(api.cred.toJson()));
           } catch (err) {
             showDialog(
               context: context,

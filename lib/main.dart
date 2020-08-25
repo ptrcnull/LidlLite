@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:LidlLite/api/client.dart';
 import 'package:flutter/material.dart';
 
+import 'package:LidlLite/api/client.dart';
 import 'package:LidlLite/prefs.dart';
 import 'package:LidlLite/screens/login.dart';
 import 'package:LidlLite/screens/show_code.dart';
@@ -63,8 +63,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
     if (await Prefs.hasString('credentials')) {
       var cred = Credential.fromJson(jsonDecode(await Prefs.getString('credentials')));
-      api.token = cred.token.accessToken;
-      goto(context, HomeScreen(cred));
+      api.cred = cred;
+      goto(context, HomeScreen());
       return;
     }
 
