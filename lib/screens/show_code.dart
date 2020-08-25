@@ -1,11 +1,11 @@
-import 'package:LidlLite/widgets/card_container.dart';
 import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
 
 import 'package:LidlLite/prefs.dart';
-import 'package:LidlLite/screens/login.dart';
 import 'package:LidlLite/util/goto.dart';
+import 'package:LidlLite/screens/login.dart';
+import 'package:LidlLite/widgets/card_container.dart';
 
 
 const lightBlue = Color(0xFF63BEFA);

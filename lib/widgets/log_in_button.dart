@@ -1,16 +1,15 @@
 import 'dart:convert';
-
-import 'package:LidlLite/api/client.dart';
-import 'package:LidlLite/prefs.dart';
-import 'package:LidlLite/screens/home.dart';
-import 'package:LidlLite/util/goto.dart';
-import 'package:LidlLite/widgets/error_dialog.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
+import 'package:LidlLite/api/client.dart';
+import 'package:LidlLite/prefs.dart';
+import 'package:LidlLite/util/goto.dart';
 import 'package:LidlLite/util/openid.dart';
 import 'package:LidlLite/util/key_to_rect.dart';
+import 'package:LidlLite/screens/home.dart';
+import 'package:LidlLite/widgets/error_dialog.dart';
 
 class LogInButton extends StatelessWidget {
   final GlobalKey scaffoldChildKey;

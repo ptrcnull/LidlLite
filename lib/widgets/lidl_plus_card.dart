@@ -1,10 +1,10 @@
-import 'package:LidlLite/widgets/card_tile.dart';
 import 'package:flutter/material.dart';
 
-import 'package:LidlLite/api/client.dart';
 import 'package:LidlLite/prefs.dart';
-import 'package:LidlLite/screens/show_code.dart';
+import 'package:LidlLite/api/client.dart';
 import 'package:LidlLite/util/goto.dart';
+import 'package:LidlLite/screens/show_code.dart';
+import 'package:LidlLite/widgets/card_tile.dart';
 
 class LidlPlusCard extends StatelessWidget {
   Future<String> getLoyaltyCard() async {

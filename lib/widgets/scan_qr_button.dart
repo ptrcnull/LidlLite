@@ -1,10 +1,10 @@
-import 'package:LidlLite/util/goto.dart';
 import 'package:flutter/material.dart';
 
 import 'package:qrscan/qrscan.dart' as scanner;
 
-import 'package:LidlLite/screens/show_code.dart';
 import 'package:LidlLite/prefs.dart';
+import 'package:LidlLite/util/goto.dart';
+import 'package:LidlLite/screens/show_code.dart';
 
 bool isNumeric(String char) {
   return 48 <= char.codeUnitAt(0) && char.codeUnitAt(0) <= 57;

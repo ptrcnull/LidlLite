@@ -1,9 +1,10 @@
 import 'dart:convert';
 
+import 'package:http/http.dart' as http;
+
 import 'package:LidlLite/api/models/lidl_pay_card.dart';
 import 'package:LidlLite/util/device_id.dart';
 import 'package:LidlLite/util/openid.dart';
-import 'package:http/http.dart' as http;
 
 const AppGatewayURL = 'https://appgateway.lidlplus.com/';
 const PaymentsURL = 'https://payments.lidlplus.com/';
