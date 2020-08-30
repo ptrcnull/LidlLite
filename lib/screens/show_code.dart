@@ -17,8 +17,8 @@ const lidlPayGradientColors = [ lightBlue, blue ];
 
 String reformatLidlPayCode(String code) {
   return code.substring(0, 17) +
-    DateFormat('ddMMyyHHmmss').format(DateTime.now().toUtc()) +
-    code.substring(29);
+    DateFormat('ddMMyyyyHHmm').format(DateTime.now().toUtc()) +
+    + '01' + code.substring(31);
 }
 
 class ShowCodeScreen extends StatefulWidget {
