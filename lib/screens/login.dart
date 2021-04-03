@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:LidlLite/widgets/scan_qr_button.dart';
-import 'package:LidlLite/widgets/log_in_button.dart';
+import 'package:lidl_lite/widgets/scan_qr_button.dart';
+import 'package:lidl_lite/widgets/log_in_button.dart';
 
 class LoginScreen extends StatelessWidget {
   final GlobalKey scaffoldChildKey = GlobalKey();

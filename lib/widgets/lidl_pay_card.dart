@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:LidlLite/prefs.dart';
-import 'package:LidlLite/util/goto.dart';
-import 'package:LidlLite/api/client.dart';
-import 'package:LidlLite/api/models/lidl_pay_card.dart';
-import 'package:LidlLite/screens/show_code.dart';
-import 'package:LidlLite/widgets/card_tile.dart';
+import 'package:lidl_lite/prefs.dart';
+import 'package:lidl_lite/util/goto.dart';
+import 'package:lidl_lite/api/client.dart';
+import 'package:lidl_lite/api/models/lidl_pay_card.dart';
+import 'package:lidl_lite/screens/show_code.dart';
+import 'package:lidl_lite/widgets/card_tile.dart';
 
 class LidlPayCard extends StatelessWidget {
   Future<List<LidlPayCardModel>> getLidlPayCards() async {

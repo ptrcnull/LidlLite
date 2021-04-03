@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'package:LidlLite/prefs.dart';
-import 'package:LidlLite/screens/login.dart';
-import 'package:LidlLite/util/goto.dart';
-import 'package:LidlLite/widgets/lidl_pay_card.dart';
-import 'package:LidlLite/widgets/lidl_plus_card.dart';
-import 'package:LidlLite/widgets/person_data_card.dart';
-import 'package:LidlLite/widgets/token_expiry_card.dart';
+import 'package:lidl_lite/prefs.dart';
+import 'package:lidl_lite/screens/login.dart';
+import 'package:lidl_lite/util/goto.dart';
+import 'package:lidl_lite/widgets/lidl_pay_card.dart';
+import 'package:lidl_lite/widgets/lidl_plus_card.dart';
+import 'package:lidl_lite/widgets/person_data_card.dart';
+import 'package:lidl_lite/widgets/token_expiry_card.dart';
 
 class HomeScreen extends StatelessWidget {
   @override

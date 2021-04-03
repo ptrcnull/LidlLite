@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:LidlLite/qrcodegen.dart';
+import 'package:lidl_lite/qrcodegen.dart';
 
 class CardContainer extends StatelessWidget {
   final String code;

@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 
-import 'package:LidlLite/prefs.dart';
-import 'package:LidlLite/api/client.dart';
-import 'package:LidlLite/util/goto.dart';
-import 'package:LidlLite/util/openid.dart';
-import 'package:LidlLite/screens/login.dart';
-import 'package:LidlLite/screens/show_code.dart';
-import 'package:LidlLite/screens/home.dart';
+import 'package:lidl_lite/prefs.dart';
+import 'package:lidl_lite/api/client.dart';
+import 'package:lidl_lite/util/goto.dart';
+import 'package:lidl_lite/util/openid.dart';
+import 'package:lidl_lite/screens/login.dart';
+import 'package:lidl_lite/screens/show_code.dart';
+import 'package:lidl_lite/screens/home.dart';
 
 void main() {
   runApp(MyApp());

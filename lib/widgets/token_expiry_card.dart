@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 import 'package:duration/duration.dart';
 
-import 'package:LidlLite/prefs.dart';
-import 'package:LidlLite/api/client.dart';
-import 'package:LidlLite/widgets/card_tile.dart';
-import 'package:LidlLite/widgets/error_dialog.dart';
+import 'package:lidl_lite/prefs.dart';
+import 'package:lidl_lite/api/client.dart';
+import 'package:lidl_lite/widgets/card_tile.dart';
+import 'package:lidl_lite/widgets/error_dialog.dart';
 
 class TokenExpiryCard extends StatefulWidget {
   _TokenExpiryCardState createState() => _TokenExpiryCardState();

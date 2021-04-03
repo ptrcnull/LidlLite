@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:openid_client/openid_client.dart';
 
-import 'package:LidlLite/api/client.dart';
-import 'package:LidlLite/widgets/card_tile.dart';
+import 'package:lidl_lite/api/client.dart';
+import 'package:lidl_lite/widgets/card_tile.dart';
 
 class UserDataCard extends StatelessWidget {
   final OpenIdClaims data = api.cred.token.idToken.claims;
