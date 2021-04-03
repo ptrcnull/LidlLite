@@ -8,6 +8,8 @@ import 'package:lidl_lite/util/openid.dart';
 
 const AppGatewayURL = 'https://appgateway.lidlplus.com/';
 const PaymentsURL = 'https://payments.lidlplus.com/';
+const AppVersion = '14.34.7';
+const ApiVersion = 'v23';
 
 var api = ApiClient();
 
@@ -20,7 +22,7 @@ class ApiClient extends http.BaseClient {
     request.headers['authorization'] = 'Bearer ' + cred.token.accessToken ?? '';
 
     request.headers['app'] = 'com.lidl.eci.lidlplus';
-    request.headers['app-version'] = '14.24.2';
+    request.headers['app-version'] = AppVersion;
     request.headers['operating-system'] = 'Android';
     request.headers['countryv1model'] = 'PL';
     request.headers['deviceid'] = await getDeviceID();
@@ -29,17 +31,17 @@ class ApiClient extends http.BaseClient {
   }
 
   Future<bool> init() async {
-    var res = await post(AppGatewayURL + 'app/v21/PL/init?appVersion=14.24.2');
+    var res = await post(AppGatewayURL + 'app/$ApiVersion/PL/init?appVersion=$AppVersion');
     var body = jsonDecode(res.body);
     return body['code'] == 'RESULT_I40_01';
   }
 
   Future<Map<String, dynamic>> getProfile() async {
-    var res = await post(AppGatewayURL + 'app/v21/PL/contacts/lidlplusprofile',
+    var res = await post(AppGatewayURL + 'app/$ApiVersion/PL/contacts/lidlplusprofile',
       headers: {
         'content-type': 'application/json'
       },
-      body: jsonEncode({'country_code': 'PL', 'store_key': 'PL1884'}));
+      body: jsonEncode({'country_code': 'PL'}));
     return jsonDecode(res.body);
   }
 
